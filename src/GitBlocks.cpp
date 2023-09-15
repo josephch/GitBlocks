@@ -25,6 +25,7 @@
 #include "RemoveDialog.h"
 #include "NewBranchDialog.h"
 #include "SwitchBranchDialog.h"
+#include "SetUserDialog.h"
 
 // Register the plugin with Code::Blocks.
 // We are using an anonymous namespace so we don't litter the global one.
@@ -103,6 +104,7 @@ void GitBlocks::BuildMenu(wxMenuBar* menuBar)
 	RegisterFunction(wxCommandEventHandler(GitBlocks::Init), _("Create an empty repository"));
 	RegisterFunction(wxCommandEventHandler(GitBlocks::Clone), _("Clone an existing repository"));
 	RegisterFunction(wxCommandEventHandler(GitBlocks::Destroy), _("Destroy the local repository"));
+	RegisterFunction(wxCommandEventHandler(GitBlocks::SetUser), _("Set user.name and user.e-mail"));
 	menu->AppendSeparator();
 	RegisterFunction(wxCommandEventHandler(GitBlocks::Commit), _("Commit"));
 	RegisterFunction(wxCommandEventHandler(GitBlocks::CommitAll), _("Commit all changes"));
@@ -238,6 +240,23 @@ void GitBlocks::Destroy(wxCommandEvent &event)
 		
 		if (!dir.Rmdir(wxPATH_RMDIR_RECURSIVE))
 			Manager::Get()->GetLogManager()->Log(_T("failed"), logSlot);
+	}
+}
+
+void GitBlocks::SetUser(wxCommandEvent &event)
+{
+	SetUserDialog dialog(Manager::Get()->GetAppWindow());
+	if(dialog.ShowModal() == wxID_OK)
+	{
+		if (wxMessageBox(_("Are you sure you want to change Global Author name and email?"), _("Change Author name and email"), wxYES_NO) == wxYES)
+		{
+			wxString command = git + _T(" config --global --replace-all user.name '") + dialog.TextCtrl1->GetValue()+_T("'");
+			ExecuteInTerminal(command, _("Set user name ..."), dialog.TextCtrl1->GetValue());
+			wxString command1 = git + _T(" config --global --replace-all user.email '") + dialog.TextCtrl2->GetValue()+_T("'");
+			ExecuteInTerminal(command1, _("Set user email ..."), dialog.TextCtrl2->GetValue());
+			wxString command2 = git + _T(" commit --amend --reset-author ")+ _T("Reset Author");
+			ExecuteInTerminal(command2, _("Reset Author ..."), _T(""));
+		}
 	}
 }
 

@@ -54,6 +54,7 @@
 		<Unit filename="include/RemoveDialog.h" />
 		<Unit filename="include/RenameDialog.h" />
 		<Unit filename="include/SwitchBranchDialog.h" />
+		<Unit filename="include/SetUserDialog.h" />
 		<Unit filename="manifest.xml" />
 		<Unit filename="src/CloneDialog.cpp" />
 		<Unit filename="src/CommitAllDialog.cpp" />
@@ -64,6 +65,7 @@
 		<Unit filename="src/RemoveDialog.cpp" />
 		<Unit filename="src/RenameDialog.cpp" />
 		<Unit filename="src/SwitchBranchDialog.cpp" />
+		<Unit filename="src/SetUserDialog.cpp" />
 		<Unit filename="wxsmith/CloneDialog.wxs" />
 		<Unit filename="wxsmith/CommitAllDialog.wxs" />
 		<Unit filename="wxsmith/CommitDialog.wxs" />
@@ -72,6 +74,7 @@
 		<Unit filename="wxsmith/RemoveDialog.wxs" />
 		<Unit filename="wxsmith/RenameDialog.wxs" />
 		<Unit filename="wxsmith/SwitchBranchDialog.wxs" />
+		<Unit filename="wxsmith/SetUserDialog.wxs" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 			<wxsmith version="1">
@@ -85,6 +88,7 @@
 					<wxDialog wxs="wxsmith/RemoveDialog.wxs" src="src/RemoveDialog.cpp" hdr="include/RemoveDialog.h" fwddecl="0" i18n="1" name="RemoveDialog" language="CPP" />
 					<wxDialog wxs="wxsmith/RenameDialog.wxs" src="src/RenameDialog.cpp" hdr="include/RenameDialog.h" fwddecl="0" i18n="1" name="RenameDialog" language="CPP" />
 					<wxDialog wxs="wxsmith/SwitchBranchDialog.wxs" src="src/SwitchBranchDialog.cpp" hdr="include/SwitchBranchDialog.h" fwddecl="0" i18n="1" name="SwitchBranchDialog" language="CPP" />
+					<wxDialog wxs="wxsmith/SetUserDialog.wxs" src="src/SetUserDialog.cpp" hdr="include/SetUserDialog.h" fwddecl="0" i18n="1" name="SetUserDialog" language="CPP" />
 				</resources>
 			</wxsmith>
 		</Extensions>

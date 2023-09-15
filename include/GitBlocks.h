@@ -136,6 +136,7 @@ private:
 	void Init(wxCommandEvent &event);
 	void Clone(wxCommandEvent &event);
 	void Destroy(wxCommandEvent &event);
+	void SetUser(wxCommandEvent &event);
 	
 	void Commit(wxCommandEvent &event);
 	void CommitAll(wxCommandEvent &event);
